@@ -1,5 +1,6 @@
 # Data-Mining---Given-two-brain-regions-such-as-Pre-Frontal-Cortex-and-Posterior-Parietal-Cortex-
-The problem is to find anatomical relations of these two regions from the articles of the corpus in semantic scholar using its available api s
+The problem is to find anatomical relations of these two regions from the articles of the corpus in semantic scholar using its available api s:
+
 Tools & Libraries:
 
 Requests - a library to send HTTP requests:
