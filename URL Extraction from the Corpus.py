@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Dec  5 19:22:25 2018
+
+@author: Bharath Kumar
+"""
+
+#using pdfminer library
+import requests
+from bs4 import BeautifulSoup as bs
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfpage import PDFPage
+from io import StringIO
+
+# this is a function to use pdfminer script in program. i have got it from stackoverflow
+def convert_pdf_to_txt(path):
+    rsrcmgr = PDFResourceManager()
+    retstr = StringIO()
+    codec = 'utf-8'
+    laparams = LAParams()
+    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
+    fp = open(path, 'rb')
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    password = ""
+    maxpages = 0
+    caching = True
+    pagenos=set()
+
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
+        interpreter.process_page(page)
+
+    text = retstr.getvalue()
+
+    fp.close()
+    device.close()
+    retstr.close()
+    return text
+
+
+keywords = ["pre frontal cortex", "post parietal cortex"]
+
+BASE_URL = "https://www.semanticscholar.org/"
+
+add = "search?q=pre%20frontal%20cortex&sort=relevance"
+
+for word in keywords:
+    word = word.replace(" ", "%20")
+    search_str = BASE_URL + "search?q="
+    search_str += word + "&sort=relevance"
+    print(search_str)
+    res = requests.get(search_str).content
+    soup = bs(res, "html.parser")
+    name_box = soup.select("a")
+    print(name_box)
+    break
+
+# no_of_files = 2
+# processed_texts  = []
+# for i in range(1, no_of_files+1):
+#     text  = convert_pdf_to_txt(str(i)+".pdf")
+#     processed_texts.append(text)
+# print(processed_texts)
