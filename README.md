@@ -1,4 +1,4 @@
-# Data-Mining---Given-two-brain-regions-such-as-Pre-Frontal-Cortex-and-Posterior-Parietal-Cortex-
+# Data-Mining---Two-brain-regions--Pre-Frontal-Cortex-and-Posterior-Parietal-Cortex!
 The problem is to find anatomical relations of these two regions from the articles of the corpus in semantic scholar using its available api s:
 
 Tools & Libraries:
@@ -9,11 +9,15 @@ Requests - a library to send HTTP requests:
 lxml - provides python bindings to a fast html and xml processing library called libxml. 
 BeautifulSoup - a parsing library that uses different parsers to extract data from HTML and XML documents.
  It has the ability to navigate a parsed document and extract what is required.
+ BeautifulSoup4 Library
+tqdm 4.28.1 - loops-wrap any iterable
+pdfminer 20140328-PDFMiner is a tool for extracting information from PDF documents.
+Pandas,Numpy,Sklearn etc.,
 
 Requirements:
 System: Unix or Windows-based machine
 Python 3
-BeautifulSoup4 Library
+Tensorflow,Keras,Pytorch (Optional Choose)
 
 Two Regions of Brain taken for Anatomical Relation:
 
